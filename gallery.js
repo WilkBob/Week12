@@ -17,6 +17,9 @@ class Painting{
         this.pass = PaintingData.pass;
         this.paintingDiv = document.createElement('div');
         this.paintingDiv.classList.add('painting');
+        const gridSize = Math.sqrt(this.colors.length);
+        this.paintingDiv.style.gridTemplateColumns = `repeat(${gridSize}, 1fr)`;
+        this.paintingDiv.style.gridTemplateRows = `repeat(${gridSize}, 1fr)`;
         this.paintingSquares = this.colors.map(color => {
             const square = document.createElement('div');
             square.classList.add('paintingSquare');

@@ -2,6 +2,7 @@
 const colorPicker = document.getElementById('colorPicker');
 const params = new URLSearchParams(window.location.search);
 const id = params.get('id');
+const size = params.get('size') <=16 ? params.get('size') : 8;
 const URL = 'https://65f7649eb4f842e808858e6f.mockapi.io/colors/gallery';
 
 // Event listener for color picker change
@@ -44,9 +45,10 @@ class Canvas {
         this.grid = document.getElementById('grid');
         this.squares = [];
         this.isDrawing = false;
-
+        let length = colors?.length || size * size || 100;
+        document.documentElement.style.setProperty('--gridSize', Math.sqrt(length));
         // Creating squares
-        for (let i = 0; i < 100; i++) {
+        for (let i = 0; i < length; i++) {
             const square = document.createElement('div');
             square.classList.add('square');
             this.grid.appendChild(square);
@@ -110,11 +112,23 @@ class Canvas {
         this.downloadButton.addEventListener('click', () => {
             downloadPainting();
         }); 
+
+        // Event listener for size button
+        const sizeInput = document.getElementById('gridSize');
+        sizeInput.value = Math.sqrt(length);
+        this.sizeButton = document.getElementById('setGridSize');
+        this.sizeButton.addEventListener('click', () => {
+            this.setSize(sizeInput.value);
+        });
     }
 
     // Function to reset canvas
     reset() {
         window.window.location.href = "index.html";
+    }
+
+    setSize(size){
+        window.location.href = `index.html?size=${size}`;
     }
 
     // Function to save canvas
@@ -162,28 +176,31 @@ getURLPainting();
 
 async function downloadPainting() {
     let painting;
+    let gridSize // Define your grid size here
     if (id) {
         painting = await getPaintingByID(id);
+        gridSize = Math.sqrt(painting.colors.length);
     } else {
+        gridSize = Math.sqrt(canvas.squares.length);
         painting = {
             colors: canvas.squares.map(square => square.color),
             name: 'Untitled'
         };
     }
     const colors = painting.colors;
-    const downloadCanvas = document.createElement('canvas'); // Rename the variable here
+    const downloadCanvas = document.createElement('canvas');
     const size = parseInt(prompt('Please enter the size of the image in pixels (e.g. 500 for 500x500 pixels') || 500);
     downloadCanvas.width = size;
     downloadCanvas.height = size;
     const context = downloadCanvas.getContext('2d');
-    for (let i = 0; i < 100; i++) {
-        const x = (i % 10) * size / 10;
-        const y = Math.floor(i / 10) * size / 10;
+    for (let i = 0; i < gridSize * gridSize; i++) {
+        const x = (i % gridSize) * size / gridSize;
+        const y = Math.floor(i / gridSize) * size / gridSize;
         context.fillStyle = colors[i] || '#ffffff';
-        context.fillRect(x, y, size / 10, size / 10);
+        context.fillRect(x, y, size / gridSize, size / gridSize);
     }
     const a = document.createElement('a');
-    a.href = downloadCanvas.toDataURL(); // And here
+    a.href = downloadCanvas.toDataURL();
     a.download = `${painting.name}.png`;
     a.click();
 }

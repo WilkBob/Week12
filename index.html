@@ -31,7 +31,7 @@
             <div class="col">
                 <h1 class="text-center">Draw by Bob</h1>
                 <p class="text-center">
-                    This is a pixel art drawing app built using css grid and vanilla javascript. Choose a color, and click a square to color it. You can also press save to store your drawing online, which can be viewed in the <a href="./gallery.html">gallery</a>. In order to save an edited drawing, you must enter a password, which was entered when the drawing was first saved. Please don't attempt to edit another user's art.
+                    This is a pixel art drawing app built using css grid and vanilla javascript. Choose a color, and click a square to color it. You can also press save to store your drawing online, which can be viewed in the <a href="./gallery.html">gallery</a>. In order to save an edited drawing, you must enter a password, which was entered when the drawing was first saved. Please don't attempt to edit another user's art. The maximum grid size is 16x16. Enjoy!
                 </p>
                 <hr>
             </div>
@@ -41,12 +41,16 @@
                 <input type="color" class="form-control form-control-color bg-dark" id="colorPicker" value="#563d7c" title="Choose your color">
             </div>
             <div class="col toolbar-item">
-                <button class="btn btn-success" id="clearButton">Clear</button>
+                <button class="btn btn-danger" id="clearButton">Clear</button>
+            </div>
+             <div class="col toolbar-item">
+                <input type="number" id="gridSize" name="gridSize" min="1" max="16" class="form-control w-25">
+                <button class="btn btn-danger ml-2" id="setGridSize">Set Size</button>
             </div>
             <div class="col toolbar-item">
                 <button class="btn btn-success" id="saveButton">Save</button>
             </div>
-            <div class="col toolbar-item">
+           <div class="col toolbar-item">
                 <button class="btn btn-success" id="downloadButton">Download</button>
             </div>
         </div>
