@@ -81,7 +81,7 @@ body{
   }
   
   .toolbar-item:hover {
-    background-color: #222; /* Slight background change on hover */
+    background-color: #727272; /* Slight background change on hover */
     cursor: pointer;
   }
 
