@@ -1,0 +1,64 @@
+body{
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+.paintingContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+    background-color: #ffffff1c;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.paintingContainer:hover{
+    background-color: #ffffff3c;
+}
+
+.painting{
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(10, 1fr);
+    background-color: #333;
+    aspect-ratio: 1 / 1;
+    margin-top: 10px;
+    border-radius: 10px;
+    overflow: hidden;
+
+}
+
+.paintingSquare{
+    aspect-ratio: 1 / 1;
+}
+
+#gallery{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+@media (max-width: 600px) {
+    .painting {
+        height: 300px ;
+    }
+    
+}
+
+@media (min-width: 601px) and (max-width: 900px) {
+    .painting {
+        height: 400px;
+    }
+}
+
+@media (min-width: 901px) {
+    .painting {
+        height: 500px;
+    }
+}
