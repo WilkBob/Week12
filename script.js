@@ -172,14 +172,15 @@ async function downloadPainting() {
     }
     const colors = painting.colors;
     const downloadCanvas = document.createElement('canvas'); // Rename the variable here
-    downloadCanvas.width = 500;
-    downloadCanvas.height = 500;
+    const size = parseInt(prompt('Please enter the size of the image in pixels (e.g. 500 for 500x500 pixels') || 500);
+    downloadCanvas.width = size;
+    downloadCanvas.height = size;
     const context = downloadCanvas.getContext('2d');
     for (let i = 0; i < 100; i++) {
-        const x = (i % 10) * 50;
-        const y = Math.floor(i / 10) * 50;
+        const x = (i % 10) * size / 10;
+        const y = Math.floor(i / 10) * size / 10;
         context.fillStyle = colors[i] || '#ffffff';
-        context.fillRect(x, y, 50, 50);
+        context.fillRect(x, y, size / 10, size / 10);
     }
     const a = document.createElement('a');
     a.href = downloadCanvas.toDataURL(); // And here
