@@ -66,20 +66,19 @@ body{
 }
 
 .toolbar {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 60px; /* Decreased height */ /* Darker background color */
     color: #f4f4f4;
-    border: none; /* Removed border */
-  }
+
+}
   
   .toolbar-item {
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    padding: 10px; /* Added padding for better icon spacing */
-    border-radius: 5px; /* Rounded corners */
+   display: flex;
+    justify-content: center;
+  }
+
+  #gridSize {
+    margin: 0 10px;
+    min-width: 65px;
+    max-width: 85px;
   }
 
 
