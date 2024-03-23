@@ -8,9 +8,9 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body class="container container-fluid bg-dark">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark gaming">
         <div class="container">
-            <a class="navbar-brand" href="index.html">Draw by Bob</a>
+            <a class="navbar-brand" href="index.html"><span class="gaming">Draw</span></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -29,13 +29,14 @@
     <div class="container container-xl bg-dark text-light">
         <div class="row">
             <div class="col">
-                <h1 class="text-center">Draw by Bob</h1>
+                <h1 class="text-center"><span class="gaming">Draw</span> by Bob</h1>
                 <p class="text-center">
                     This is a pixel art drawing app built using css grid and vanilla javascript. Choose a color, and click a square to color it. You can also press save to store your drawing online, which can be viewed in the <a href="./gallery.html">gallery</a>. In order to save an edited drawing, you must enter a password, which was entered when the drawing was first saved. Please don't attempt to edit another user's art. The maximum grid size is 16x16. Enjoy!
                 </p>
                 <hr>
             </div>
         </div>
+        <!-- toolbar -->
         <div class="row toolbar">
             <div class="col toolbar-item">
                 <input type="color" class="form-control form-control-color bg-dark h-100" id="colorPicker" value="#563d7c" title="Choose your color">
@@ -54,7 +55,7 @@
                 <button class="btn btn-success" id="downloadButton">Download</button>
             </div>
         </div>
-
+<!-- GRID -->
         <div class="row">
             <div class="col d-flex justify-content-center">
                 <div class="grid my-4" id="grid">
@@ -63,6 +64,7 @@
             </div>
         </div> 
         <hr>
+        <!-- form for painting details -->
         <div class="row my-4">
             <div class="col" id="form">
                 <div class="form-group">

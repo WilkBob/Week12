@@ -4,6 +4,14 @@ body{
     margin: 0;
     padding: 0;
 }
+@font-face {
+    font-family: "RetroGaming";
+    src: url(./PublicPixel.ttf);
+}
+
+.gaming{
+    font-family: RetroGaming;
+}
 
 .paintingContainer{
     display: flex;

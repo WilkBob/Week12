@@ -159,8 +159,10 @@ class Canvas {
         } else {
 
         //save painting if it's unsaved
-            const pass = document.getElementById('pass').value;
-            const name = document.getElementById('title').value;
+        const passinput = document.getElementById('pass')
+            const pass = passinput.value;
+            const nameinput =document.getElementById('title');
+            const name = nameinput.value;
             if (pass && name) {
                 await fetch(URL, {
                     method: 'POST',
@@ -172,6 +174,8 @@ class Canvas {
                     window.window.location.href = `gallery.html`
                 });
             } else {
+                passinput.classList.add('is-invalid');
+                nameinput.classList.add('is-invalid')
                 window.window.scrollTo(0, 1000)
                 alert('You must enter a name and password to save a painting');
             }
