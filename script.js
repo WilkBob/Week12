@@ -142,14 +142,19 @@ class Canvas {
         const colors = this.squares.map(square => square.color);
         //update painting if we're looking at a saved painting
         if (id) {
-            const pass = document.getElementById('pass').value;
+            const input = document.getElementById('pass');
+            const pass = input.value;
             const painting = await getPaintingByID(id);
             if (pass == painting.pass) {
                 updatePainting(id, colors).then(()=> {
                     window.window.location.href = `gallery.html`
                 });
             } else {
+                window.window.scrollTo(0, 1000)
+                input.classList.add('is-invalid')
+                
                 alert('Incorrect password');
+                
             }
         } else {
 
@@ -167,7 +172,8 @@ class Canvas {
                     window.window.location.href = `gallery.html`
                 });
             } else {
-                alert('You must enter a password to save a painting');
+                window.window.scrollTo(0, 1000)
+                alert('You must enter a name and password to save a painting');
             }
         }
     }
@@ -176,10 +182,11 @@ class Canvas {
 let canvas;
 // Function to initialize canvas based on URL parameters
 async function getURLPainting() {
+        const titleInput = document.getElementById('title');
     if (id) {
         const painting = await getPaintingByID(id);
         canvas = new Canvas(painting.colors);
-        const titleInput = document.getElementById('title');
+        
         titleInput.value = painting.name;
         titleInput.disabled = true;
     } else {

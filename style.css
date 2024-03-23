@@ -27,6 +27,9 @@ body{
     grid-template-rows: repeat(var(--gridSize), 1fr);
     background-color: #333;
     aspect-ratio: 1 / 1;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: #000 1px 1px 20px 0px;
 }
 
 .square{
