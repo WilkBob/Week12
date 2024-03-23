@@ -106,8 +106,10 @@ class Canvas {
 
         // Event listener for save button
         this.saveButton = document.getElementById('saveButton');
-        this.saveButton.addEventListener('click', () => {
-            this.save();
+        this.saveButton.addEventListener('click', async () => {
+            this.save()
+                
+            
         });
 
         // Event listener for download button
@@ -138,24 +140,31 @@ class Canvas {
     // Function to save canvas
     async save() {
         const colors = this.squares.map(square => square.color);
+        //update painting if we're looking at a saved painting
         if (id) {
-            const pass = prompt('Please enter the password to update this painting');
+            const pass = document.getElementById('pass').value;
             const painting = await getPaintingByID(id);
             if (pass == painting.pass) {
-                updatePainting(id, colors);
+                updatePainting(id, colors).then(()=> {
+                    window.window.location.href = `gallery.html`
+                });
             } else {
                 alert('Incorrect password');
             }
         } else {
-            const pass = prompt('Please enter a password to save this painting');
-            const name = prompt('Please enter a name for this painting');
-            if (pass) {
+
+        //save painting if it's unsaved
+            const pass = document.getElementById('pass').value;
+            const name = document.getElementById('title').value;
+            if (pass && name) {
                 await fetch(URL, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
                     },
                     body: JSON.stringify({ colors, pass, name })
+                }).then(()=> {
+                    window.window.location.href = `gallery.html`
                 });
             } else {
                 alert('You must enter a password to save a painting');
@@ -170,6 +179,9 @@ async function getURLPainting() {
     if (id) {
         const painting = await getPaintingByID(id);
         canvas = new Canvas(painting.colors);
+        const titleInput = document.getElementById('title');
+        titleInput.value = painting.name;
+        titleInput.disabled = true;
     } else {
         canvas = new Canvas();
     }
