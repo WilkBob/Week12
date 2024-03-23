@@ -45,6 +45,7 @@ class Canvas {
         this.grid = document.getElementById('grid');
         this.squares = [];
         this.isDrawing = false;
+        //set size based on URL parameter or default to 100 (10x10 grid)
         let length = colors?.length || size * size || 100;
         document.documentElement.style.setProperty('--gridSize', Math.sqrt(length));
         // Creating squares
@@ -122,11 +123,12 @@ class Canvas {
         });
     }
 
-    // Function to reset canvas
+    // refresh the page
     reset() {
         window.window.location.href = "index.html";
     }
 
+    //set url to new size, reload page
     setSize(size){
         window.location.href = `index.html?size=${size}`;
     }
@@ -205,3 +207,4 @@ async function downloadPainting() {
     a.click();
 }
 
+W
