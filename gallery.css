@@ -46,6 +46,13 @@ body{
     aspect-ratio: 1 / 1;
 }
 
+.button-bar{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
 #gallery{
     display: flex;
     flex-wrap: wrap;

@@ -57,7 +57,7 @@ class Painting{
         this.editButton.href = `index.html?id=${this.id}`;
         //create button bar
         this.buttonBar = document.createElement('div');
-        this.buttonBar.classList.add('mt-3', 'px-5');
+        this.buttonBar.classList.add('mt-3', 'px-5', 'button-bar');
         this.buttonBar.appendChild(this.deleteButton);
         this.buttonBar.appendChild(this.editButton);
         //create container for painting
