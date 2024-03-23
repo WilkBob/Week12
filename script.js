@@ -12,22 +12,25 @@ colorPicker.addEventListener('change', () => {
 
 // Function to fetch painting by ID
 async function getPaintingByID(id) {
-    const response = await fetch(`${URL}/${id}`);
-    const data = await response.json();
-    return data;
-}
+    const response = await $.ajax({
+      url: `${URL}/${id}`,
+      method: 'GET',
+      dataType: 'json',
+    });
+    return response;
+  }
 
 // Function to update painting
 async function updatePainting(id, colors) {
-    const response = await fetch(`${URL}/${id}`, {
+    const response = await $.ajax({
+        url: `${URL}/${id}`,
         method: 'PUT',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ colors })
-    });
-    const data = await response.json();
-    return data;
+        contentType: 'application/json',
+        data: JSON.stringify({colors})
+        });
+        
+    
+  return response;
 }
 
 // Square class
