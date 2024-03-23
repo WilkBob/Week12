@@ -62,12 +62,11 @@ class Canvas {
         // Event listeners for square click and drag
         this.grid.addEventListener('mousedown', (event) => {
             const target = event.target;
-            if (target.classList.contains('square')) {
                 const index = this.squares.findIndex(square => square.element === target);
                 this.squares[index].color = colorPicker.value;
                 this.squares[index].element.style.backgroundColor = colorPicker.value;
                 this.isDrawing = true;
-            }
+            
         });
 
         this.grid.addEventListener('mouseup', () => {
