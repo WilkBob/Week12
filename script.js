@@ -206,5 +206,3 @@ async function downloadPainting() {
     a.download = `${painting.name}.png`;
     a.click();
 }
-
-W
