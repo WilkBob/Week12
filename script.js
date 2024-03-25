@@ -107,9 +107,20 @@ class Canvas {
         // Event listener for save button
         this.saveButton = document.getElementById('saveButton');
         this.saveButton.addEventListener('click', async () => {
-            this.save()
+            this.showsave()
                 
             
+        });
+
+        this.saveSubmit = document.getElementById('saveDrawing');
+        this.saveSubmit.addEventListener('click', async () => {
+            this.save();
+        });
+
+        this.saveCancel = document.getElementById('close');
+        this.saveCancel.addEventListener('click', async () => {
+            const modal = document.getElementById('save');
+            modal.classList.add('d-none');
         });
 
         // Event listener for download button
@@ -125,6 +136,12 @@ class Canvas {
         this.sizeButton.addEventListener('click', () => {
             this.setSize(sizeInput.value);
         });
+    }
+
+    colorSquare(target) {
+        const index = this.squares.findIndex(square => square.element === target);
+        this.squares[index].color = colorPicker.value;
+        this.squares[index].element.style.backgroundColor = colorPicker.value;
     }
 
     // refresh the page
@@ -181,6 +198,11 @@ class Canvas {
             }
         }
     }
+
+    showsave() {
+        const modal = document.getElementById('save');
+        modal.classList.remove('d-none');
+    }
 }
 
 let canvas;
@@ -201,6 +223,8 @@ async function getURLPainting() {
 // Call the initialization function
 getURLPainting();
 
+
+//download painting as png
 async function downloadPainting() {
     let painting;
     let gridSize // Define your grid size here
